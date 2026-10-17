@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- TODO: update all meta values below -->
+  <title>Site Name | Tagline</title>
+  <meta name="description" content="120–155 character description with service + location + value proposition." />
+  <link rel="canonical" href="https://yourdomain.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Site Name | Tagline" />
+  <meta property="og:description" content="120–155 character description for social sharing." />
+  <meta property="og:image" content="https://yourdomain.com/assets/social-preview.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://yourdomain.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Site Name" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Site Name | Tagline" />
+  <meta name="twitter:description" content="120–155 character description for social sharing." />
+  <meta name="twitter:image" content="https://yourdomain.com/assets/social-preview.jpg" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Site Name",
+    "url": "https://yourdomain.com",
+    "telephone": "+15550000000",
+    "email": "hello@yourdomain.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "City",
+      "addressRegion": "ST",
+      "addressCountry": "US"
+    },
+    "areaServed": "City, State",
+    "openingHours": "Mo-Fr 08:00-17:00"
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* TODO: replace with brand fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <nav>
+    <!-- TODO: build navbar -->
+  </nav>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="hero">
+    <!-- TODO: build hero with CTA above fold -->
+  </section>
+
+  <!-- ============================================================
+       SERVICES
+  ============================================================ -->
+  <section id="services">
+    <!-- TODO: build service cards -->
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+  ============================================================ -->
+  <section id="about">
+    <!-- TODO: build about section -->
+  </section>
+
+  <!-- ============================================================
+       CONTACT / ESTIMATE FORM
+  ============================================================ -->
+  <section id="contact">
+    <form id="contact-form">
+      <input type="text"   id="form-first-name"  name="first_name"  placeholder="First Name"  required />
+      <input type="text"   id="form-last-name"   name="last_name"   placeholder="Last Name" />
+      <input type="tel"    id="form-phone"       name="phone"       placeholder="Phone"       required />
+      <input type="email"  id="form-email"       name="email"       placeholder="Email"       required />
+      <input type="text"   id="form-address"     name="address"     placeholder="Property Address" />
+      <select id="form-service" name="service">
+        <option value="">Select a service…</option>
+        <!-- TODO: add service options -->
+      </select>
+      <select id="form-time" name="time">
+        <option value="">Best time to reach you…</option>
+        <option>Morning (8am–12pm)</option>
+        <option>Afternoon (12pm–5pm)</option>
+        <option>Evening (5pm–8pm)</option>
+      </select>
+      <textarea id="form-description" name="description" placeholder="Describe your project…"></textarea>
+      <button type="submit" id="form-submit">Submit Request →</button>
+      <div id="form-msg" style="display:none;"></div>
+    </form>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <!-- TODO: build footer -->
+  </footer>
+
+  <script>
+    // TODO: add interactivity
+  </script>
+
+</body>
+</html>
