@@ -1,0 +1,31 @@
+{
+  "name": "[CLIENT TO PROVIDE: business name]",
+  "summary": "[CLIENT TO PROVIDE: one plain, factual sentence describing what the business does and where]",
+  "businessType": "LocalBusiness",
+  "url": "https://example.com",
+  "lang": "en",
+  "phone": "[CLIENT TO PROVIDE: phone]",
+  "email": "[CLIENT TO PROVIDE: email]",
+  "address": {
+    "street": "[CLIENT TO PROVIDE: street address]",
+    "city": "[CLIENT TO PROVIDE: city]",
+    "region": "[CLIENT TO PROVIDE: state]",
+    "postalCode": "[CLIENT TO PROVIDE: ZIP]",
+    "country": "US"
+  },
+  "serviceArea": ["[CLIENT TO PROVIDE: service area]"],
+  "hours": [
+    { "label": "[CLIENT TO PROVIDE: hours]", "days": [], "opens": "", "closes": "" }
+  ],
+  "services": [
+    { "name": "[CLIENT TO PROVIDE: service name]", "slug": "service-one", "summary": "[CLIENT TO PROVIDE: one-line summary]" }
+  ],
+  "social": [],
+  "ogImage": "/assets/og-image.jpg",
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "About", "href": "/about/" },
+    { "label": "Services", "href": "/services/" },
+    { "label": "Contact", "href": "/contact/" }
+  ]
+}

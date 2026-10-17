@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "puppeteer": "^25.12.0",
+    "tailwindcss": "^4.3.3",
+    "wrangler": "^4.147.0",
+    "yauzl": "^3.4.0"
+  },
+  "overrides": {
+    "@parcel/watcher": "^2.6.0"
+  }
+}

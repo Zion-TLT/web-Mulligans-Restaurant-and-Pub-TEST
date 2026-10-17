@@ -1,0 +1,11 @@
+# Copied to dist/ by build.mjs. Applies to static assets only, not to Worker (/api/*) responses.
+
+# workers.dev hosts (production *.workers.dev and every preview URL) must never be indexed —
+# they duplicate the custom domain.
+https://:version.:subdomain.workers.dev/*
+  X-Robots-Tag: noindex
+
+# Files under /assets/ are cached for a year. Change the filename whenever the content changes.
+# HTML keeps the platform default: public, max-age=0, must-revalidate.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

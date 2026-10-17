@@ -1,0 +1,11 @@
+node_modules/
+.wrangler/
+temporary screenshots/
+*.log
+.env
+.chrome-libs/
+core
+core.*
+dist/
+.dev.vars*
+.DS_Store
