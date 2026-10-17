@@ -1,0 +1,44 @@
+/* Scan only src/ for class names (dist/ and node_modules are never scanned). */
+@import "tailwindcss" source(none);
+@source "./";
+
+/* Neutral placeholder tokens — replace with exact values from brand_assets/ and the chosen
+   self-hosted fonts. Never fall back to Tailwind's default palette. */
+@theme {
+  --color-ink: #1a1a1a;
+  --color-paper: #ffffff;
+  --color-muted: #595959;
+  --color-accent: #1a1a1a;
+  --color-on-accent: #ffffff;
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+@layer base {
+  body { background: var(--color-paper); color: var(--color-ink); font-family: var(--font-body); line-height: 1.7; }
+  h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
+  a:focus-visible, button:focus-visible, main:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  main:focus { outline: none; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+}
+
+@layer components {
+  .skip-link { position: absolute; left: 1rem; top: 0.5rem; z-index: 60; padding: 0.75rem 1rem; background: var(--color-paper); transform: translateY(-200%); }
+  .skip-link:focus { transform: translateY(0); }
+  .site-header { position: sticky; top: 0; z-index: 50; background: var(--color-paper); border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent); }
+  .tap { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; }
+  .btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 1rem; border-radius: 0.5rem; background: var(--color-accent); color: var(--color-on-accent); font-weight: 600; transition: transform 150ms, opacity 150ms; }
+  .btn:hover { opacity: 0.9; }
+  .btn:active { transform: scale(0.98); }
+  .site-menu { display: none; flex-direction: column; padding-bottom: 0.5rem; }
+  .site-menu.is-open { display: flex; }
+  .site-menu a, .footer-links a { display: flex; align-items: center; min-height: 44px; }
+  .site-menu a:hover, .footer-links a:hover { text-decoration: underline; }
+  .site-menu a[aria-current="page"] { font-weight: 700; text-decoration: underline; text-underline-offset: 6px; }
+  @media (min-width: 48rem) {
+    .site-menu { display: flex; flex-direction: row; gap: 1.5rem; padding-bottom: 0; }
+  }
+  .site-footer { border-top: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent); }
+}

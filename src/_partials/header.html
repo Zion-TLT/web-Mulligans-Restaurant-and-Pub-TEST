@@ -1,0 +1,15 @@
+<a href="#main" class="skip-link">Skip to content</a>
+<header class="site-header">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-2">
+    <a href="/" class="tap mr-auto font-display text-lg font-bold">{{ site.name }}</a>
+    <nav aria-label="Main" class="order-last w-full md:order-none md:w-auto">
+      <ul id="site-menu" class="site-menu">{{{ navLinks }}}</ul>
+    </nav>
+    <a href="{{ site.telHref }}" class="btn">Call<span class="hidden md:inline">&nbsp;{{ site.phone }}</span></a>
+    <button type="button" class="menu-toggle tap md:hidden" aria-expanded="false" aria-controls="site-menu">
+      <span class="sr-only">Menu</span>
+      <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+<script>(()=>{const b=document.querySelector('.menu-toggle'),m=document.getElementById('site-menu');if(!b||!m)return;const s=o=>{b.setAttribute('aria-expanded',o);m.classList.toggle('is-open',o)};b.addEventListener('click',()=>s(b.getAttribute('aria-expanded')!=='true'));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&b.getAttribute('aria-expanded')==='true'){s(false);b.focus()}});m.addEventListener('click',e=>{if(e.target.closest('a'))s(false)})})();</script>
