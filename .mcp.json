@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    },
+    "serpapi": {
+      "type": "http",
+      "url": "https://mcp.serpapi.com/${SERPAPI_API_KEY}/mcp"
+    }
+  }
+}

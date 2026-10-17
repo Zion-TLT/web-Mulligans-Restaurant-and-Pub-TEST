@@ -1,0 +1,25 @@
+---
+title: Contact – [CLIENT TO PROVIDE: keyword + location] | {{ site.name }}
+description: [CLIENT TO PROVIDE: 110–155 character description of the contact page]
+---
+<section class="mx-auto max-w-6xl px-4 py-16">
+  <h1 class="text-4xl font-bold">Contact {{ site.name }}</h1>
+  <div class="mt-8 grid gap-8 md:grid-cols-2">
+    <div>
+      <h2 class="text-xl font-bold">Get in touch</h2>
+      <address class="mt-2 not-italic">
+        {{{ addressHtml }}}<br>
+        {{{ phoneLink }}}<br>
+        {{{ emailLink }}}
+      </address>
+    </div>
+    <div>
+      <h2 class="text-xl font-bold">Hours</h2>
+      {{{ hoursHtml }}}
+      <h2 class="mt-6 text-xl font-bold">Service area</h2>
+      {{{ serviceAreaHtml }}}
+    </div>
+  </div>
+  <!-- Contact form (if requested): POST to /api/contact, handled in worker/index.js with
+       Turnstile verified server-side. Load the Turnstile script on this page only. -->
+</section>

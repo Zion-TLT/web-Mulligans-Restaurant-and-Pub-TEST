@@ -1,0 +1,21 @@
+<footer class="site-footer">
+  <div class="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-3">
+    <div>
+      <p class="font-display text-lg font-bold">{{ site.name }}</p>
+      <address class="mt-2 not-italic">
+        {{{ addressHtml }}}<br>
+        {{{ phoneLink }}}<br>
+        {{{ emailLink }}}
+      </address>
+    </div>
+    <div>
+      <h2 class="font-display font-bold">Hours</h2>
+      {{{ hoursHtml }}}
+    </div>
+    <nav aria-label="Footer">
+      <ul class="footer-links">{{{ footerLinks }}}</ul>
+      {{{ socialHtml }}}
+    </nav>
+  </div>
+  <p class="mx-auto max-w-6xl px-4 pb-8 text-sm">&copy; {{ year }} {{ site.name }}</p>
+</footer>

@@ -1,0 +1,65 @@
+name: Deploy
+
+# main → production (`wrangler deploy`), gated by the strict audit.
+# Any other branch → preview URL (`wrangler versions upload --preview-alias <branch>`), gated by
+# `audit.mjs --preview`, which tolerates placeholders so drafts can go to client review.
+on:
+  push:
+    branches: ['**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Screenshots run locally; CI never needs Chrome (and .npmrc's cache dir doesn't exist here)
+  PUPPETEER_SKIP_DOWNLOAD: 'true'
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: node build.mjs
+
+      - name: Audit (strict)
+        if: github.ref_name == 'main'
+        run: node audit.mjs
+
+      - name: Audit (preview)
+        if: github.ref_name != 'main'
+        run: node audit.mjs --preview
+
+      - name: Deploy production
+        if: github.ref_name == 'main'
+        run: npx wrangler deploy
+
+      - name: Upload preview
+        if: github.ref_name != 'main'
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          worker=$(grep -oP '"name":\s*"\K[^"]+' wrangler.jsonc | head -1)
+          # Aliases: lowercase letters, digits, dashes; start with a letter; alias + "-" + worker ≤ 63 chars
+          alias=$(echo "$BRANCH" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+//')
+          [[ "$alias" =~ ^[a-z] ]] || alias="b-$alias"
+          alias=$(echo "${alias:0:$((62 - ${#worker}))}" | sed -E 's/-+$//')
+          if ! npx wrangler versions upload --preview-alias "$alias" --message "$BRANCH@${GITHUB_SHA::7}"; then
+            echo "::error::Preview upload failed. A brand-new Worker must be created once with 'npx wrangler deploy' before previews work (see README → Deploying)."
+            exit 1
+          fi
+          echo "Preview: https://$alias-$worker.<your-subdomain>.workers.dev" >> "$GITHUB_STEP_SUMMARY"
