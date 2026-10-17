@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // TODO: rename to match your site, e.g. "web-myclientsite" (setup.sh does this)
+  "name": "web-sitename",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-05-23",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true
+  },
+  // workers.dev stays on so previews work (<alias>-<name>.<subdomain>.workers.dev);
+  // dist/_headers marks every workers.dev host noindex.
+  "workers_dev": true,
+  "preview_urls": true,
+  "assets": {
+    // Built by `node build.mjs` — never the repo root
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash",
+    // Only form/API routes invoke the Worker; pages and assets are served without it
+    "run_worker_first": ["/api/*"]
+  }
+}
